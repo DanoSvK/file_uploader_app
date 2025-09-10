@@ -25,36 +25,36 @@ WITH RECURSIVE breadcrumb AS (
 SELECT * FROM breadcrumb ORDER BY created_at;
 `;
 
-// async function queryInsertFile(
-//   fileId,
-//   original_name,
-//   internal_name,
-//   folderId,
-//   userId,
-//   fileSize,
-//   mimeType,
-//   path
-// ) {
-//   try {
-//     await pool.query(
-//       "INSERT INTO files (id, original_name, internal_name, folder_id, user_id, size, mime_type, path) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
-//       [
-//         fileId,
-//         original_name,
-//         internal_name,
-//         folderId,
-//         userId,
-//         fileSize,
-//         mimeType,
-//         path,
-//       ]
-//     );
-//     return fileId;
-//   } catch (err) {
-//     console.error("Database error in queryInsertFile:", err);
-//     throw err;
-//   }
-// }
+async function queryInsertFile(
+  fileId,
+  original_name,
+  internal_name,
+  folderId,
+  userId,
+  fileSize,
+  mimeType,
+  path
+) {
+  try {
+    await pool.query(
+      "INSERT INTO files (id, original_name, internal_name, folder_id, user_id, size, mime_type, path) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+      [
+        fileId,
+        original_name,
+        internal_name,
+        folderId,
+        userId,
+        fileSize,
+        mimeType,
+        path,
+      ]
+    );
+    return fileId;
+  } catch (err) {
+    console.error("Database error in queryInsertFile:", err);
+    throw err;
+  }
+}
 
 async function queryInsertFolder(folderName, parentId, userId) {
   try {
@@ -246,4 +246,5 @@ module.exports = {
   queryGetNonFolderFileById,
   queryGetFolderFileById,
   queryGetUserByInput,
+  queryInsertFile,
 };
