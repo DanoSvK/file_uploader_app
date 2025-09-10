@@ -140,7 +140,13 @@
 
       folders.forEach((folder) =>
         folder.addEventListener("click", () => {
-          dataLayer.push({ event: "view_folder" });
+          dataLayer.push({
+            event: "view_folder",
+            namespace: "exponea",
+            event_name: "view_folder",
+            category_id: 8829123456,
+            category_name: "New Arrivals",
+          });
         })
       );
     </script>
