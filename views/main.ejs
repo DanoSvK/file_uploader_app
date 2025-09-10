@@ -79,7 +79,11 @@
           <% } else { %>
           <section class="folders-grid">
             <% folders.forEach((folder) => { %>
-            <a href="/drive/<%= folder.id %>" data-id="<%= folder.id %>">
+            <a
+              href="/drive/<%= folder.id %>"
+              data-id="<%= folder.id %>"
+              class="folder-link"
+            >
               <div class="folder">
                 <div class="folder-flex">
                   <i class="bi bi-folder"></i>
@@ -131,6 +135,15 @@
         <i class="bi bi-box-arrow-right"></i>
       </section>
     </footer>
+    <script>
+      const folders = document.querySelectorAll(".folder-link");
+
+      folders.forEach((folder) =>
+        folder.addEventListener("click", () => {
+          dataLayer.push({ event: "my_custom_event_name" });
+        })
+      );
+    </script>
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
