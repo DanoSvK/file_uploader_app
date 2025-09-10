@@ -51,10 +51,7 @@ async function insertFile(req, res) {
       filePathForQuery
     );
 
-    res.status(200).json({
-      status: "success",
-      redirectUrl: newUrl,
-    });
+    res.redirect(newUrl);
   } catch (err) {
     console.error(err); // Log real error to server/console
 
@@ -73,15 +70,9 @@ async function insertFolder(req, res) {
     await db.queryInsertFolder(folderName, parentId, userId);
 
     if (parentId) {
-      res.status(200).json({
-        status: "success",
-        redirectUrl: `/drive/${parentId}`,
-      });
+      res.redirect(`/drive/${parentId}`);
     } else {
-      res.status(200).json({
-        status: "success",
-        redirectUrl: `/drive`,
-      });
+      res.redirect(`/drive`);
     }
   } catch (err) {
     console.error(err);
@@ -166,10 +157,7 @@ async function deleteFolderFileById(req, res) {
 
     await db.queryDeleteFolderFileById(folderId, fileId);
 
-    res.status(500).json({
-      status: "success",
-      redirectUrl: "/drive",
-    });
+    res.redirect("/drive");
   } catch (err) {
     console.error("Error deleting file:", err);
     res.status(500).json({
