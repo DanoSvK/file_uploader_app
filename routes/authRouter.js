@@ -42,6 +42,7 @@ authRouter.post("/sign-up", async (req, res, next) => {
     );
     res.redirect("/sign-in");
   } catch (err) {
+    console.error("❌ Sign-up error:", err);
     return next(err);
   }
 });
