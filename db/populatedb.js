@@ -1,9 +1,9 @@
+require("dotenv").config();
 const pool = require("./pool");
-const { Client } = require("pg");
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    id SERIAL PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
     email TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE TABLE IF NOT EXISTS user_sessions (
-    sid varchar PRIMARY KEY,
+    sid VARCHAR PRIMARY KEY,
     sess JSON NOT NULL,
     expire TIMESTAMP WITH TIME ZONE NOT NULL
 );
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS folders (
     parent_id UUID REFERENCES folders(id) ON DELETE CASCADE,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    udpated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS files (
@@ -40,11 +40,15 @@ CREATE TABLE IF NOT EXISTS files (
 `;
 
 async function main() {
-  const client = new Client({
-    connectionString: `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
-  });
-  await client.connect();
-  await client.query(SQL);
-  await client.end();
+  try {
+    console.log("⏳ Connecting to database...");
+    await pool.query(SQL);
+    console.log("✅ Tables created successfully!");
+  } catch (error) {
+    console.error("❌ Error creating tables:", error);
+  } finally {
+    await pool.end();
+  }
 }
+
 main();
