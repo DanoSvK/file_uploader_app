@@ -78,4 +78,6 @@ app.use("/drive", indexRouter);
 app.use("/upload", uploadRouter);
 app.use(errorHandler);
 
-app.listen(3000, () => console.log("Server started on http://localhost:3000"));
+app.listen(3000, "0.0.0.0", () =>
+  console.log("Server started on http://0.0.0.0:3000")
+);
