@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/styles/header.css" />
+    <link rel="stylesheet" href="/assets/styles/forms.css" />
+    <script defer src="/assets/javascript/handlingAuth.js"></script>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <header class="header">
+      <h1>FILE UPLOADER</h1>
+      <div class="authentication">
+        <a href="/sign-in" class="sign-in">Sign In</a>
+        <a href="/sign-up" class="sign-up">Sign Up</a>
+      </div>
+    </header>
+    <main>
+      <section class="forms">
+        <form action="/sign-up" method="POST">
+          <h2>Login</h2>
+          <p>Have an account already? <a href="/sign-in">Sign In</a></p>
+          <label for="username" class="label-flex">
+            <span>Username</span>
+            <span class="error-msg username-error"></span>
+          </label>
+          <input type="text" name="username" class="text sign-up-username" />
+
+          <label for="email" class="label-flex">
+            <span>Email</span>
+            <span class="error-msg email-error"></span>
+          </label>
+          <input type="email" name="email" class="sign-up-email" />
+
+          <label for="password" class="label-flex">
+            <span>Password</span>
+            <span class="error-msg password-error"></span>
+          </label>
+          <input type="password" name="password" class="sign-up-password" />
+
+          <label for="confirm-password" class="label-flex">
+            <span>Confirm password</span>
+            <span class="error-msg confirm-password-error"></span>
+          </label>
+          <input
+            type="password"
+            name="password"
+            class="sign-up-confirm-password" />
+
+          <input type="submit" value="Sign up" class="submit" />
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

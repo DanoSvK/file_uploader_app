@@ -1,0 +1,120 @@
+<div class="overlay"></div>
+<!-- Rename folder modal-->
+<section class="rename-folder-modal">
+  <i class="bi bi-x-lg btn-close top-right"></i>
+  <h3>Rename Folder</h3>
+  <form action="" method="POST">
+    <label for="name">New folder name</label>
+    <input type="text" name="rename" />
+    <button type="submit">Rename Folder</button>
+  </form>
+</section>
+<!------------------------>
+
+<!-- Folder options modal -->
+<section class="folder-options-modal">
+  <form action="" method="POST" class="folder-options-modal__form">
+    <button class="rename-folder-btn">Rename</button>
+    <button type="submit" name="download" value="download">Download</button>
+    <button type="submit" name="delete" value="delete">Delete</button>
+  </form>
+</section>
+<!------------------------->
+
+<!-- Create folder modal -->
+<section class="folder-form">
+  <i class="bi bi-x-lg btn-close top-right"></i>
+  <h3>New Folder</h3>
+  <form action="/upload/folder" method="POST">
+    <label for="name">Name</label>
+    <input type="text" name="folder" />
+    <button type="submit">Create Folder</button>
+  </form>
+</section>
+<!------------------------->
+
+<!-- Upload file modal -->
+<section class="file-form">
+  <i class="bi bi-x-lg btn-close top-right"></i>
+  <h3>Upload a file</h3>
+  <form
+    action="/upload/file"
+    method="POST"
+    enctype="multipart/form-data"
+    class="upload-file-form">
+    <label for="file-upload" class="">Choose file</label>
+    <input type="file" name="file" />
+    <button type="submit">Upload</button>
+  </form>
+</section>
+<!----------------------->
+
+<!-- File info modal -->
+<section class="modal">
+  <div class="modal-info">
+    <h3>File information</h3>
+    <p>Name: <span class="modal-file-name"></span></p>
+    <p>Type: <span class="modal-file-type"></span></p>
+    <p>Size: <span class="modal-file-size"></span></p>
+    <p>Created at: <span class="modal-file-created_at"></span></p>
+  </div>
+  <form action="" method="POST" class="modal-form-delete">
+    <div class="modal-buttons">
+      <button
+        type="button"
+        class="modal-btn-close btn-close btn-close__file-modal">
+        Close
+      </button>
+      <button type="button" class="share">Share</button>
+      <button
+        type="submit"
+        name="delete"
+        value="delete"
+        class="modal-btn-delete">
+        Delete
+      </button>
+      <button type="submit" name="download" value="download">Download</button>
+    </div>
+  </form>
+  <i class="bi bi-x-lg btn-close top-right btn-close__file-modal"></i>
+</section>
+<!------------------------->
+
+<!-- Share file modal -->
+<section class="share-file-modal">
+  <i class="bi bi-x-lg btn-close top-right btn-close__share-file-modal"></i>
+  <h3 class="share-title">Share Public Link</h3>
+  <p class="share-description">
+    Generate a public link to share the selected file
+  </p>
+  <p class="share-duration-title">Duration</p>
+  <div class="share-duration-grid">
+    <button>1 hour</button>
+    <button>4 hours</button>
+    <button>1 day</button>
+    <button>3 days</button>
+    <button>1 week</button>
+  </div>
+  <p class="share-expiration">Links will expire after the specified duration</p>
+  <input type="text" class="share-url-input" />
+  <div class="buttons">
+    <button type="button">Cancel</button>
+    <form action="" method="GET" class="share-link-form">
+      <button
+        type="button"
+        name="share"
+        value="share"
+        class="generate-share-url">
+        Generate Link
+      </button>
+    </form>
+  </div>
+</section>
+<!---------------------->
+
+<div class="modal-overlay" style="display: none">
+  <div class="modal-window">
+    <p class="modal-message">Error goes here</p>
+    <button class="modal-close">Close</button>
+  </div>
+</div>

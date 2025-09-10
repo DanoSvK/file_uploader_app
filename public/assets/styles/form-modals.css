@@ -1,0 +1,86 @@
+.folder-form,
+.file-form,
+.rename-folder-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #242428;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 90%;
+  max-width: 28.125rem;
+  padding: 1rem;
+  z-index: 9;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.folder-form,
+.file-form,
+.rename-folder-modal {
+  display: none;
+}
+
+.file-form input[type="submit"],
+.folder-form input[type="submit"],
+.rename-folder-modal input[type="submit"] {
+  width: fit-content;
+  margin-left: auto;
+  margin-bottom: 0;
+  align-self: end;
+}
+
+h3 {
+  margin: 0;
+  padding-bottom: 1rem;
+}
+
+.folder-form input,
+.rename-folder-modal input {
+  background-color: #1a1a1e;
+  border: 0.0625rem solid #6c6c74;
+  color: #b6b6be;
+  padding: 0.625rem 0.3125rem;
+  border-radius: 5px;
+  margin-top: 0.3rem;
+  margin-bottom: 1.5rem;
+}
+
+/* .file-form input[type="file"] {
+  display: none;
+} */
+
+.custom-file-label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #56565f;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+}
+
+.custom-file-label:hover {
+  background-color: #3c3c44;
+}
+
+.file-form button {
+  align-self: flex-end;
+  padding: 0.3125rem 0.625rem;
+  cursor: pointer;
+}
+
+.folder-form button,
+.rename-folder-modal button {
+  width: auto;
+  align-self: flex-end;
+  padding: 0.3125rem 0.625rem;
+  cursor: pointer;
+  border-radius: 5px;
+}

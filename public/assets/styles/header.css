@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #8e8e9a;
+  background-color: #121212;
+  font-family: "Open Sans", sans-serif;
+}
+
+a,
+a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #36363b;
+  color: #fff;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.authentication {
+  display: flex;
+  gap: 1rem;
+}
+
+.sign-in,
+.sign-up,
+.sign-out-d {
+  outline: none;
+  border: none;
+  align-self: center;
+  padding: 0.625rem 1.25rem;
+  background-color: #1a1a1e;
+  border: 1px solid #56565f;
+  color: #b6b6be;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.sign-out-d {
+  display: none;
+}
+
+.sign-out-m {
+  border: none;
+  color: #b6b6be;
+}
+
+.sign-out-m svg {
+  width: 1.5625rem;
+  height: 1.5625rem;
+}
+
+.sign-in:hover,
+.sign-up:hover,
+.sign-out-d:hover {
+  cursor: pointer;
+  background-color: #383838;
+}
+
+@media (min-width: 40.625rem) {
+  .sign-out-d {
+    display: block;
+  }
+  .sign-out-m {
+    display: none;
+  }
+}

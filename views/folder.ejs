@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles/main.css" />
+    <script id="file-data" type="application/json">
+      <%- JSON.stringify(files) %>
+    </script>
+    <script id="folders-data" type="application/json">
+      <%- JSON.stringify(folders) %>
+    </script>
+    <script defer src="/assets/javascript/fileInfoModal.js"></script>
+    <script defer src="/assets/javascript/addFormsModals.js"></script>
+    <script defer src="/assets/javascript/folderOptionsModal.js"></script>
+    <script defer src="/assets/javascript/shareFileModal.js"></script>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('./modals.ejs') %>
+    <div class="layout">
+      <header class="header">
+        <h1><a href="/drive">FILE UPLOADER</a></h1>
+        <div class="authentication">
+          <form action="/sign-out" method="POST">
+            <button type="submit" class="sign-out-img sign-out-m">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+            <input
+              type="submit"
+              value="Sign out"
+              class="sign-out-btn sign-out-d" />
+          </form>
+        </div>
+      </header>
+      <aside>
+        <button class="add-folder-btn">
+          <i class="bi bi-folder-plus"></i>
+          <p>New Folder</p>
+        </button>
+        <button class="add-file-btn">
+          <i class="bi bi-file-earmark-plus"></i>
+          <p>New File</p>
+        </button>
+      </aside>
+      <main>
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <ol>
+            <li><a href="/drive" class="username"><%= username %></a></li>
+            <% breadcrumb.forEach((item) => { %>
+            <li>
+              <a href="/drive/<%= item.id %>"
+                ><span class="breadcrumb-text"><%= item.name %></span></a
+              >
+            </li>
+            <% }) %>
+          </ol>
+        </nav>
+        <section class="flex-container">
+          <h2>Folders</h2>
+          <% if(folders.length === 0) { %>
+          <h3 class="no-data-msg">Add new folders</h3>
+          <% } else { %>
+          <section class="folders-grid">
+            <% folders.forEach((folder) => { %>
+            <a href="/drive/<%= folder.id %>" data-id="<%= folder.id %>">
+              <div class="folder">
+                <div class="folder-flex">
+                  <i class="bi bi-folder"></i>
+                  <p><%= folder.name %></p>
+                </div>
+                <div class="folder-menu-icon">
+                  <i class="bi bi-three-dots-vertical"></i>
+                </div>
+              </div>
+            </a>
+            <% }) %>
+          </section>
+          <% } %>
+          <section class="files-flex">
+            <h2>Files</h2>
+            <% if(files.length === 0) { %>
+            <h3 class="no-data-msg">Add new files</h3>
+            <% } else { %>
+            <div class="legend">
+              <p>Name</p>
+              <p>Size</p>
+              <p>Created</p>
+            </div>
+            <% files.forEach((file) => { %>
+            <div class="file" data-id="<%= file.id %>">
+              <div class="file-wrapper">
+                <i class="bi bi-file-earmark"></i>
+                <p>Name: <%= file.original_name %></p>
+              </div>
+              <% if(file.size / (1024 * 1024) >= 1) { %>
+              <p>Size: <%= (file.size / (1024 * 1024)).toFixed(2) %> MB</p>
+              <% } else { %>
+              <p>Size: <%= (file.size / 1024).toFixed(2) %> KB</p>
+              <% } %>
+              <p>
+                Created at: <%= new Date(file.created_at).toLocaleDateString()
+                %>
+              </p>
+            </div>
+            <% }) %> <% } %>
+          </section>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <section class="mobile-footer">
+        <i class="bi bi-folder-plus"></i>
+        <i class="bi bi-file-earmark-plus"></i>
+        <i class="bi bi-box-arrow-right"></i>
+      </section>
+    </footer>
+  </body>
+</html>

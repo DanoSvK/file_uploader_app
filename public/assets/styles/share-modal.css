@@ -1,0 +1,62 @@
+.share-file-modal {
+  display: none;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #242428;
+  padding: 1.5rem;
+  color: #fff;
+  border-radius: 5px;
+  z-index: 11;
+}
+
+.share-duration-grid {
+  display: flex;
+}
+
+.share-duration-grid button {
+  padding: 0.3125rem 0.625rem;
+  border-color: #b6b6be;
+  color: #b6b6be;
+  cursor: pointer;
+}
+
+.share-duration-grid button:hover {
+  background-color: #404040;
+}
+
+.share-duration-grid button:focus {
+  background-color: #4a4a4a;
+}
+
+.share-title,
+.share-description {
+  padding-bottom: 1rem;
+}
+
+.share-expiration {
+  color: #b6b6be;
+}
+
+.share-file-modal .buttons {
+  display: flex;
+  justify-content: end;
+  gap: 0.625rem;
+}
+
+.share-file-modal .buttons button {
+  padding: 0.3125rem 0.625rem;
+  align-self: flex-end;
+}
+
+.share-url-input {
+  display: none;
+  margin-bottom: 1rem;
+  width: 100%;
+  padding: 10px;
+  background-color: #121212;
+  outline: none;
+  border: none;
+  color: #8e8e9a;
+}
